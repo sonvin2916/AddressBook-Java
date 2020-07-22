@@ -134,10 +134,12 @@ public class Person
                 }
             }
         }
-
-
     }
-    void editPerson() {
+    void sortName()
+    {
+        arrayList.stream().sorted(Comparator.comparing(Person::getFirstName)).forEach(action->System.out.printf("",action.getFirstName(),action.getLastName(),action.getAddress(),action.getCity(),action.getState(),action.getZip(),action.getPhoneNumber()));
+    }
+    void editPerson() {1
         System.out.println("Enter Person's First Name");
         String firsName = scanner.next();
         for (int index = 0; index < arrayList.size(); index++) {

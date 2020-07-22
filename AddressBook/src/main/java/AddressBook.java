@@ -1,6 +1,8 @@
+import java.util.Scanner;
 
-public class AddressBook 
+public class AddressBook
 {
+    Scanner scanner = new Scanner(System.in);
     private String firstName;
     private String lastName;
     private String address;
@@ -18,6 +20,12 @@ public class AddressBook
         this.zip = zip;
         this.phoneNumber = phoneNumber;
     }
+
+    public AddressBook()
+    {
+
+    }
+
     public String getFirstName()
     {
         return firstName;
@@ -75,9 +83,45 @@ public class AddressBook
     {
         this.phoneNumber=phoneNumber;
     }
+
+    public void display(){
+        System.out.println("\nAddress Book\n FirstName:"+firstName+"\nLastName:"+lastName+"\nAddress:"+address+"\nState:"+state+"\nCity:"+city+"\nZip:"+zip+"\nPhone:"+phoneNumber);
+    }
+    void addPerson ()
+    {
+
+            System.out.println("Enter First Name");
+            String firstName = scanner.next();
+
+            System.out.println("Enter Last Name");
+            String lastName = scanner.next();
+
+            System.out.println("Enter Address");
+            String address = scanner.next();
+
+            System.out.println("Enter City");
+            String city = scanner.next();
+
+            System.out.println("Enter State");
+            String state = scanner.next();
+
+            System.out.println("Enter Zip Code");
+            int zip = scanner.nextInt();
+
+            System.out.println("Enter Phone Number");
+            int phoneNumber = scanner.nextInt();
+
+            AddressBook addressBook = new AddressBook(firstName, lastName, address, city, state, zip, phoneNumber);
+            addressBook.display();
+    }
+
     public static void main(String[] args)
     {
-        System.out.println("Welcome to Address Book Application");
+        AddressBook addressBook = new AddressBook();
+        addressBook.addPerson();
+
     }
+
+
 }
 

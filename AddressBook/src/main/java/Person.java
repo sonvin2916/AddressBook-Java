@@ -85,24 +85,6 @@ public class Person
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    void checkDuplicate(String firstName)
-    {
-        if(arrayList.size()>1)
-        {
-            for(int index=0;index<arrayList.size();index++)
-            {
-                person=(Person)arrayList.get(index);
-                if(firstName.equals(person.firstName))
-                {
-                    System.out.println("Duplicate record exits"+person.getFirstName());
-                    duplicate=1;
-                }
-            }
-        }
-        else {
-            System.out.println("Record not found");
-        }
-    }
     void addPerson()
     {
         System.out.println("Enter the total number of people you want to add");
@@ -210,6 +192,24 @@ public class Person
             }
         }
     }
+    private void checkDuplicate(String firstName)
+    {
+        if(arrayList.size()>1)
+        {
+            for(int index=0;index<arrayList.size();index++)
+            {
+                person=(Person)arrayList.get(index);
+                if(firstName.equals(person.firstName))
+                {
+                    System.out.println("Duplicate record exits"+person.getFirstName());
+                    duplicate=1;
+                }
+            }
+        }
+        else {
+            System.out.println("Record not found");
+        }
+    }
     void sortStateCityZip()
     {
         System.out.printf("Enter Your Choice \n1.City \n2.State \n3.Zip");
@@ -228,6 +228,20 @@ public class Person
 
         }
     }
+    void viewPersonByCityState()
+    {
+        System.out.println("Enter City and State");
+        String city = scanner.next();
+        String state = scanner.next();
+        for(int index=0;index<arrayList.size();index++)
+        {
+            person=(Person)arrayList.get(index);
+            if(city.equals(person.getCity())&&state.equals(person.getState()))
+            {
+                System.out.println("Matching record found"+person.getFirstName());
+            }
+        }
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -236,7 +250,7 @@ public class Person
         int zip = 0, phoneNumber = 0;
         Person personDetails = new Person(firstName, lastName, address, city, state, zip, phoneNumber);
         while (true) {
-            System.out.println("Enter your choice \n1.Add a Person \n2.Edit a Person \n3.Delete a Person \n4.Exit");
+            System.out.println("Enter your choice \n1.Add a Person \n2.Edit a Person \n3.Delete a Person \n4.Sort By Name \n5.Sort by City State and Zip \n6.View Person by city and state");
             int select = scanner.nextInt();
             switch (select) {
                 case 1:
@@ -249,6 +263,16 @@ public class Person
                 case 3:
                     personDetails.deletePerson();
                     break;
+                case 4 :
+                    personDetails.sortName();
+                    break;
+                case 5 :
+                    personDetails.sortStateCityZip();
+                    break;
+                case 6 :
+                    personDetails.viewPersonByCityState();
+                     break;
+
                 default:
                     System.out.println("Exit");
                     break;
@@ -257,6 +281,5 @@ public class Person
             }
         }
     }
-
 }
 

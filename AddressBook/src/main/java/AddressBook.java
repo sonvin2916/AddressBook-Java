@@ -1,4 +1,6 @@
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBook
@@ -88,6 +90,7 @@ public class AddressBook
     {
 
         Scanner scanner = new Scanner(System.in);
+        ArrayList<AddressBook> arrayList = new ArrayList<AddressBook>();
         System.out.println("Enter First Name");
         String firstName = scanner.next();
 
@@ -137,9 +140,19 @@ public class AddressBook
                      addressBook.setPhoneNumber(phoneNumber);
                      break;
         }
-        AddressBook editperson = new AddressBook(firstName, lastName, address, city, state, zip, phoneNumber);
-        editperson.display();
+        arrayList.add(new AddressBook(firstName, lastName, address, city, state, zip, phoneNumber));
+        addressBook.display();
 
+        System.out.println("Enter the First Name of the person ");
+        String name = scanner.next();
+        for(AddressBook deletePerson:arrayList)
+        {
+            if(arrayList.contains(name))
+            {
+                arrayList.remove(deletePerson);
+                System.out.println("Deleted Successfully");
+            }
+        }
 
 
     }

@@ -8,6 +8,7 @@ public class Person
 {
     Scanner scanner=new Scanner(System.in);
     ArrayList<Person> arrayList = new ArrayList<Person>();
+    int duplicate=0;
     private String firstName;
     private String lastName;
     private String address;
@@ -82,37 +83,58 @@ public class Person
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    void checkDuplicate(String firstName)
+    {
+        if(arrayList.size()>1)
+        {
+            for(int index=0;index<arrayList.size();index++)
+            {
+                person=(Person)arrayList.get(index);
+                if(firstName.equals(person.firstName))
+                {
+                    System.out.println("Duplicate record exits"+person.getFirstName());
+                    duplicate=1;
+                }
+            }
+        }
+        else {
+            System.out.println("Record not found");
+        }
+    }
     void addPerson()
     {
         System.out.println("Enter the total number of people you want to add");
         int number = scanner.nextInt();
-        for(int i=0; i<number; i++)
+        for(int index=0; index<number; index++)
         {
             System.out.println("Enter First Name");
             String firstName = scanner.next();
-
             System.out.println("Enter Last Name");
             String lastName = scanner.next();
+            checkDuplicate(firstName);
+            if(duplicate==0) {
+                System.out.println("Enter Address");
+                String address = scanner.next();
 
-            System.out.println("Enter Address");
-            String address = scanner.next();
+                System.out.println("Enter City");
+                String city = scanner.next();
 
-            System.out.println("Enter City");
-            String city = scanner.next();
+                System.out.println("Enter State");
+                String state = scanner.next();
 
-            System.out.println("Enter State");
-            String state = scanner.next();
+                System.out.println("Enter Zip Code");
+                int zip = scanner.nextInt();
 
-            System.out.println("Enter Zip Code");
-            int zip = scanner.nextInt();
-
-            System.out.println("Enter Phone Number");
-            int phoneNumber = scanner.nextInt();
+                System.out.println("Enter Phone Number");
+                int phoneNumber = scanner.nextInt();
+                arrayList.add(new Person(firstName,lastName,address,city,state,phoneNumber,zip));
+                for(Person add : arrayList)
+                {
+                    System.out.println("First Name :"+add.getFirstName()+"\nLast Name:"+add.getLastName()+"\nAddress:"+add.getAddress()+"\nState:"+add.getState()+"\nCity:"+add.getCity()+"\nZip:"+add.getZip()+"\nPhone Number:"+add.getPhoneNumber());
+                }
+            }
         }
-        for(Person add : arrayList)
-        {
-            System.out.println("First Name :"+add.getFirstName()+"\nLast Name:"+add.getLastName()+"\nAddress:"+add.getAddress()+"\nState:"+add.getState()+"\nCity:"+add.getCity()+"\nZip:"+add.getZip()+"\nPhone Number:"+add.getPhoneNumber());
-        }
+
 
     }
     void editPerson() {

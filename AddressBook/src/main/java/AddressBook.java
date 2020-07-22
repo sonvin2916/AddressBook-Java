@@ -1,8 +1,9 @@
+
 import java.util.Scanner;
 
 public class AddressBook
 {
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner=new Scanner(System.in);
     private String firstName;
     private String lastName;
     private String address;
@@ -10,7 +11,8 @@ public class AddressBook
     private String state;
     private int zip;
     private int phoneNumber;
-    public AddressBook(String firstName, String lastName, String address, String city, String state, int zip, int phoneNumber)
+    AddressBook(){}
+    AddressBook(String firstName, String lastName, String address, String city, String state, int zip, int phoneNumber)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -21,106 +23,127 @@ public class AddressBook
         this.phoneNumber = phoneNumber;
     }
 
-    public AddressBook()
-    {
-
-    }
-
-    public String getFirstName()
-    {
+    public String getFirstName() {
         return firstName;
     }
-    public void setFirstName(String firstName)
-    {
+
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    public String getLastName()
-    {
+
+    public String getLastName() {
         return lastName;
     }
-    public void setLastName(String lastName)
-    {
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public String getAddress()
-    {
+
+    public String getAddress() {
         return address;
     }
-    public void setAddress(String address)
-    {
+
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public String getCity()
-    {
+    public String getCity() {
         return city;
     }
-    public void setCity(String city)
-    {
+
+    public void setCity(String city) {
         this.city = city;
     }
-    public String getState()
-    {
+
+    public String getState() {
         return state;
     }
-    public void setState(String state)
-    {
+
+    public void setState(String state) {
         this.state = state;
     }
-    public int getZip()
-    {
+
+    public int getZip() {
         return zip;
     }
-    public void setZip(int zip)
-    {
+
+    public void setZip(int zip) {
         this.zip = zip;
     }
-    public int getPhoneNumber()
-    {
+
+    public int getPhoneNumber() {
         return phoneNumber;
     }
-    public void setPhoneNumber(int phoneNumber)
-    {
-        this.phoneNumber=phoneNumber;
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public void display(){
-        System.out.println("\nAddress Book\n FirstName:"+firstName+"\nLastName:"+lastName+"\nAddress:"+address+"\nState:"+state+"\nCity:"+city+"\nZip:"+zip+"\nPhone:"+phoneNumber);
-    }
-    void addPerson ()
+    public void display()
     {
-
-            System.out.println("Enter First Name");
-            String firstName = scanner.next();
-
-            System.out.println("Enter Last Name");
-            String lastName = scanner.next();
-
-            System.out.println("Enter Address");
-            String address = scanner.next();
-
-            System.out.println("Enter City");
-            String city = scanner.next();
-
-            System.out.println("Enter State");
-            String state = scanner.next();
-
-            System.out.println("Enter Zip Code");
-            int zip = scanner.nextInt();
-
-            System.out.println("Enter Phone Number");
-            int phoneNumber = scanner.nextInt();
-
-            AddressBook addressBook = new AddressBook(firstName, lastName, address, city, state, zip, phoneNumber);
-            addressBook.display();
+        System.out.println("\nAddress Book\n FirstName:" + firstName + "\nLastName:" + lastName + "\nAddress:" + address + "\nState:" + state + "\nCity:" + city + "\nZip:" + zip + "\nPhone:" + phoneNumber);
     }
 
     public static void main(String[] args)
     {
-        AddressBook addressBook = new AddressBook();
-        addressBook.addPerson();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter First Name");
+        String firstName = scanner.next();
+
+        System.out.println("Enter Last Name");
+        String lastName = scanner.next();
+
+        System.out.println("Enter Address");
+        String address = scanner.next();
+
+        System.out.println("Enter City");
+        String city = scanner.next();
+
+        System.out.println("Enter State");
+        String state = scanner.next();
+
+        System.out.println("Enter Zip Code");
+        int zip = scanner.nextInt();
+
+        System.out.println("Enter Phone Number");
+        int phoneNumber = scanner.nextInt();
+
+        AddressBook addressBook = new AddressBook(firstName, lastName, address, city, state, zip, phoneNumber);
+        addressBook.display();
+
+        System.out.println("What do you want to edit? \n1.Address \n2.City \n3.State \n4.Zip \n5.PhoneNumber");
+        int choice = scanner.nextInt();
+        switch (choice)
+        {
+            case 1 : System.out.println("Enter Address");
+                     address = scanner.next();
+                     addressBook.setAddress(address);
+                     break;
+            case 2 : System.out.println("Enter City");
+                      city = scanner.next();
+                     addressBook.setCity(city);
+                     break;
+            case 3 : System.out.println("Enter State");
+                     state = scanner.next();
+                     addressBook.setState(state);
+                     break;
+            case 4 : System.out.println("Enter Zip");
+                     zip = scanner.nextInt();
+                     addressBook.setZip(zip);
+                     break;
+            case 5 : System.out.println("Enter Phone Number");
+                     phoneNumber =  scanner.nextInt();
+                     addressBook.setPhoneNumber(phoneNumber);
+                     break;
+        }
+        AddressBook editperson = new AddressBook(firstName, lastName, address, city, state, zip, phoneNumber);
+        editperson.display();
+
+
 
     }
+
 
 
 }

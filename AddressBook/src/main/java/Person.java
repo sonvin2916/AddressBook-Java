@@ -242,6 +242,22 @@ public class Person
             }
         }
     }
+    void searchByStateCity()
+    {
+
+        System.out.println("Enter City and State");
+        String city = scanner.next();
+        String state = scanner.next();
+        for(int index=0;index<arrayList.size();index++)
+        {
+            person=(Person)arrayList.get(index);
+            if(city.equals(person.getCity()) || state.equals(person.getState()))
+            {
+                System.out.println("Matching record found"+person.getFirstName());
+            }
+        }
+
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -250,7 +266,7 @@ public class Person
         int zip = 0, phoneNumber = 0;
         Person personDetails = new Person(firstName, lastName, address, city, state, zip, phoneNumber);
         while (true) {
-            System.out.println("Enter your choice \n1.Add a Person \n2.Edit a Person \n3.Delete a Person \n4.Sort By Name \n5.Sort by City State and Zip \n6.View Person by city and state");
+            System.out.println("Enter your choice \n1.Add a Person \n2.Edit a Person \n3.Delete a Person \n4.Sort By Name \n5.Sort by City State and Zip \n6.View Person by city and state \n7. Search by City and State" );
             int select = scanner.nextInt();
             switch (select) {
                 case 1:
@@ -272,6 +288,9 @@ public class Person
                 case 6 :
                     personDetails.viewPersonByCityState();
                      break;
+                case 7 :
+                    personDetails.searchByStateCity();
+                    break;
 
                 default:
                     System.out.println("Exit");

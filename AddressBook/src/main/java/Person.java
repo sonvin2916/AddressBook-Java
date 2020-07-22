@@ -1,9 +1,8 @@
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class AddressBook
+public class Person
 {
     Scanner scanner=new Scanner(System.in);
     private String firstName;
@@ -13,8 +12,8 @@ public class AddressBook
     private String state;
     private int zip;
     private int phoneNumber;
-    AddressBook(){}
-    AddressBook(String firstName, String lastName, String address, String city, String state, int zip, int phoneNumber)
+    Person(){}
+    Person(String firstName, String lastName, String address, String city, String state, int zip, int phoneNumber)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -90,7 +89,7 @@ public class AddressBook
     {
 
         Scanner scanner = new Scanner(System.in);
-        ArrayList<AddressBook> arrayList = new ArrayList<AddressBook>();
+        ArrayList<Person> arrayList = new ArrayList<Person>();
         System.out.println("Enter First Name");
         String firstName = scanner.next();
 
@@ -112,8 +111,8 @@ public class AddressBook
         System.out.println("Enter Phone Number");
         int phoneNumber = scanner.nextInt();
 
-        AddressBook addressBook = new AddressBook(firstName, lastName, address, city, state, zip, phoneNumber);
-        addressBook.display();
+        Person person = new Person(firstName, lastName, address, city, state, zip, phoneNumber);
+        person.display();
 
         System.out.println("What do you want to edit? \n1.Address \n2.City \n3.State \n4.Zip \n5.PhoneNumber");
         int choice = scanner.nextInt();
@@ -121,31 +120,31 @@ public class AddressBook
         {
             case 1 : System.out.println("Enter Address");
                      address = scanner.next();
-                     addressBook.setAddress(address);
+                     person.setAddress(address);
                      break;
             case 2 : System.out.println("Enter City");
                       city = scanner.next();
-                     addressBook.setCity(city);
+                     person.setCity(city);
                      break;
             case 3 : System.out.println("Enter State");
                      state = scanner.next();
-                     addressBook.setState(state);
+                     person.setState(state);
                      break;
             case 4 : System.out.println("Enter Zip");
                      zip = scanner.nextInt();
-                     addressBook.setZip(zip);
+                     person.setZip(zip);
                      break;
             case 5 : System.out.println("Enter Phone Number");
                      phoneNumber =  scanner.nextInt();
-                     addressBook.setPhoneNumber(phoneNumber);
+                     person.setPhoneNumber(phoneNumber);
                      break;
         }
-        arrayList.add(new AddressBook(firstName, lastName, address, city, state, zip, phoneNumber));
-        addressBook.display();
+        arrayList.add(new Person(firstName, lastName, address, city, state, zip, phoneNumber));
+        person.display();
 
         System.out.println("Enter the First Name of the person ");
         String name = scanner.next();
-        for(AddressBook deletePerson:arrayList)
+        for(Person deletePerson:arrayList)
         {
             if(arrayList.contains(name))
             {

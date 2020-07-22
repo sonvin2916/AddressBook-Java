@@ -1,5 +1,7 @@
 
 
+import com.sun.javafx.scene.control.TableColumnSortTypeWrapper;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.*;
@@ -139,7 +141,8 @@ public class Person
     {
         arrayList.stream().sorted(Comparator.comparing(Person::getFirstName)).forEach(action->System.out.printf("",action.getFirstName(),action.getLastName(),action.getAddress(),action.getCity(),action.getState(),action.getZip(),action.getPhoneNumber()));
     }
-    void editPerson() {1
+    void editPerson()
+    {
         System.out.println("Enter Person's First Name");
         String firsName = scanner.next();
         for (int index = 0; index < arrayList.size(); index++) {
@@ -205,6 +208,24 @@ public class Person
                     System.out.println("Not Deleted");
                 }
             }
+        }
+    }
+    void sortStateCityZip()
+    {
+        System.out.printf("Enter Your Choice \n1.City \n2.State \n3.Zip");
+        int choice=scanner.nextInt();
+        switch (choice)
+        {
+            case 1 :
+                arrayList.stream().sorted(Comparator.comparing(Person::getCity)).forEach(action->System.out.printf("",action.getCity(),action.getFirstName(),action.getLastName(),action.getAddress(),action.getState(),action.getZip(),action.getPhoneNumber()));
+                break;
+            case 2 :
+                arrayList.stream().sorted(Comparator.comparing(Person::getState)).forEach(action->System.out.printf("",action.getState(),action.getFirstName(),action.getLastName(),action.getAddress(),action.getCity(),action.getZip(),action.getPhoneNumber()));
+                break;
+            case 3 :
+                arrayList.stream().sorted(Comparator.comparing(Person::getZip)).forEach(action->System.out.printf("",action.getZip(),action.getFirstName(),action.getLastName(),action.getAddress(),action.getCity(),action.getState(),action.getPhoneNumber()));
+                break;
+
         }
     }
 
